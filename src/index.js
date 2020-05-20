@@ -18,7 +18,7 @@ const btn = document.getElementById('publisher');
 btn.addEventListener('click',function(){
 	import('./publisher.js').then(function(publisher){
 		var selectedLanguagePreference=document.querySelector('input[name="lang"]:checked').value;
-		console.log(isPublisherRendered+" "+_translator.getLanguage()+" -> "+selectedLanguagePreference);
+		//console.log(isPublisherRendered+" "+_translator.getLanguage()+" -> "+selectedLanguagePreference);
 		if(!isPublisherRendered)// First click
 		{
 			if(!(_translator.getLanguage()===selectedLanguagePreference))
@@ -28,7 +28,7 @@ btn.addEventListener('click',function(){
 			publisherRender.style.display="block";
 			isPublisherRendered=true;
 		}
-		if(!(_translator.getLanguage()===selectedLanguagePreference))// Language has been changed
+		else if(!(_translator.getLanguage()===selectedLanguagePreference))// Language has been changed
 		{
 			_translator.setLanguage(selectedLanguagePreference);
 			document.getElementById('content').removeChild(publisherRender);

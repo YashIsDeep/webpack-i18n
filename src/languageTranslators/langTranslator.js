@@ -20,20 +20,19 @@ class Translator
 		if(this.currentLanguage=="en")
 			this.JSONobject={};
 		else
-			this.JSONobject=this.fetchJSONObjectFromServer(this.currentLanguage+".json");
-	}
-	fetchJSONObjectFromServer(filename)
-	{
-		var language={
-			"en.json":{},
-			"hi.json":{"Publish Now":"Abhi publish kariye"},
-		};
-		if(language[filename]==undefined)
 		{
-			console.log("Unsupported language: "+filename);
-			return {};
+			let filename=this.currentLanguage+".js";
+			console.log("Fetching "+filename);
+			var context=this;
+			var _json;
+			const module=import(/* webPackMode: "lazy" */"./langJSON/"+filename);
+			module.then(()=>{
+				this.JSONobject=module.default.json;
+			});
+			console.log(module);
+			context.JSONobject=_json;
+			console.log(context.JSONobject);
 		}
-		return language[filename];
 	}
 	parseText(text) // Case sensitive
 	{
