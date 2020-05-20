@@ -12,26 +12,24 @@ element.innerHTML = _translator.parseText("Good morning.");
 element.classList.add('hello');
 document.getElementById('greeting').appendChild(element);
 
+const btn1 = document.getElementById('setter');
+btn1.addEventListener('click',function(){
+	var selectedLanguagePreference=document.querySelector('input[name="lang"]:checked').value;
+	_translator.setLanguage(selectedLanguagePreference);
+	if(isPublisherRendered)
+	{
+		isPublisherRendered=false;
+		document.getElementById('content').removeChild(publisherRender);
+	}
+});
+
 var isPublisherRendered=false;
 var publisherRender;
-const btn = document.getElementById('publisher');
-btn.addEventListener('click',function(){
+const btn2 = document.getElementById('publisher');
+btn2.addEventListener('click',function(){
 	import('./publisher.js').then(function(publisher){
-		var selectedLanguagePreference=document.querySelector('input[name="lang"]:checked').value;
-		//console.log(isPublisherRendered+" "+_translator.getLanguage()+" -> "+selectedLanguagePreference);
 		if(!isPublisherRendered)// First click
 		{
-			if(!(_translator.getLanguage()===selectedLanguagePreference))
-				_translator.setLanguage(selectedLanguagePreference);
-			publisherRender=publisher.default.render(_translator);
-			document.getElementById('content').appendChild(publisherRender);
-			publisherRender.style.display="block";
-			isPublisherRendered=true;
-		}
-		else if(!(_translator.getLanguage()===selectedLanguagePreference))// Language has been changed
-		{
-			_translator.setLanguage(selectedLanguagePreference);
-			document.getElementById('content').removeChild(publisherRender);
 			publisherRender=publisher.default.render(_translator);
 			document.getElementById('content').appendChild(publisherRender);
 			publisherRender.style.display="block";

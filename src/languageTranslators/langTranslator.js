@@ -25,18 +25,15 @@ class Translator
 			console.log("Fetching "+filename);
 			var context=this;
 			var _json;
-			const module=import(/* webPackMode: "lazy" */"./langJSON/"+filename);
-			module.then(()=>{
+			import(/* webPackMode: "lazy" */"./langJSON/"+filename).then((module)=>{
 				this.JSONobject=module.default.json;
 			});
 			console.log(module);
 			context.JSONobject=_json;
-			console.log(context.JSONobject);
 		}
 	}
 	parseText(text) // Case sensitive
 	{
-		console.log(text,this.JSONobject);
 		if(this.JSONobject[text]==undefined)
 			return text;
 		else

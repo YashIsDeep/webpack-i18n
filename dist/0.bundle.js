@@ -1,1 +1,1 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[0],[,function(i,s,n){"use strict";n.r(s),s.default={json:{"Publish Now":"Abhi publish kariye"}}}]]);
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{2:function(i,s,n){"use strict";n.r(s),s.default={json:{"Publish Now":"Abhi publish kariye"}}}}]);
