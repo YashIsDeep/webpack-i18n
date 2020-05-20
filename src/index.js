@@ -1,10 +1,14 @@
 import _ from 'lodash';
 import './style.css';
 
-var languagePreference;
+// Expected to download a json object and store it
+// _translator.translate(str)= json[text] 
+import Translator from '../src/languageTranslators/langTranslator.js';
+
+var _translator = new Translator();
 
 const element = document.createElement('div');
-element.innerHTML = "Good morning.";
+element.innerHTML = _translator.parseText("Good morning.");
 element.classList.add('hello');
 document.getElementById('greeting').appendChild(element);
 
@@ -13,20 +17,22 @@ var publisherRender;
 const btn = document.getElementById('publisher');
 btn.addEventListener('click',function(){
 	import('./publisher.js').then(function(publisher){
-		languagePreference=document.querySelector('input[name="lang"]:checked').value;
-		console.log(isPublisherRendered+" "+publisher.default.getLanguage()+" -> "+languagePreference);
+		var selectedLanguagePreference=document.querySelector('input[name="lang"]:checked').value;
+		console.log(isPublisherRendered+" "+_translator.getLanguage()+" -> "+selectedLanguagePreference);
 		if(!isPublisherRendered)// First click
 		{
-			publisherRender=publisher.default.render();
+			if(!(_translator.getLanguage()===selectedLanguagePreference))
+				_translator.setLanguage(selectedLanguagePreference);
+			publisherRender=publisher.default.render(_translator);
 			document.getElementById('content').appendChild(publisherRender);
 			publisherRender.style.display="block";
 			isPublisherRendered=true;
 		}
-		else if(!(publisher.default.getLanguage()===languagePreference))// Language has been changed
+		if(!(_translator.getLanguage()===selectedLanguagePreference))// Language has been changed
 		{
-			publisher.default.setLanguage(languagePreference);
+			_translator.setLanguage(selectedLanguagePreference);
 			document.getElementById('content').removeChild(publisherRender);
-			publisherRender=publisher.default.render();
+			publisherRender=publisher.default.render(_translator);
 			document.getElementById('content').appendChild(publisherRender);
 			publisherRender.style.display="block";
 			isPublisherRendered=true;

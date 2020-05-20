@@ -1,18 +1,8 @@
-var language="en";
 export default {
-	render: function()
+	render: function(_translator)
 	{
 		const element=document.createElement('div');
-		element.innerHTML="PUBLISH NOW Your language preference is "+language;
-		// Now we can download json?
+		element.innerHTML=_translator.parseText("Publish Now");
 		return element;
-	},
-	setLanguage: function(str)
-	{
-		language=str;
-	},
-	getLanguage: function()
-	{
-		return language;
 	},
 };
