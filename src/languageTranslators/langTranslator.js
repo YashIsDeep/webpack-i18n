@@ -23,13 +23,10 @@ class Translator
 		{
 			let filename=this.currentLanguage+".js";
 			console.log("Fetching "+filename);
-			var context=this;
 			var _json;
 			import(/* webPackMode: "lazy" */"./langJSON/"+filename).then((module)=>{
 				this.JSONobject=module.default.json;
 			});
-			console.log(module);
-			context.JSONobject=_json;
 		}
 	}
 	parseText(text) // Case sensitive
