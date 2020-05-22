@@ -7,6 +7,4 @@ var codeContents={
 	},
 };
 
-import LanguageWrapper from './languageTranslators/languageWrapper.js';
-codeContents=LanguageWrapper(codeContents);
-export default codeContents;
+export default global.LanguageWrapper(codeContents);

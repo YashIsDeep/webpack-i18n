@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import './style.css';
+import _LanguageWrapper from './languageTranslators/languageWrapper.js';
 
 // Expected to download a json object and store it
 // _translator.translate(str)= json[text] 
@@ -7,6 +8,7 @@ import Translator from '../src/languageTranslators/langTranslator.js';
 
 var _translator = new Translator();
 global.translator=_translator;
+global.LanguageWrapper=_LanguageWrapper;
 
 const element = document.createElement('div');
 element.innerHTML = _translator.parseText("Good morning.");
