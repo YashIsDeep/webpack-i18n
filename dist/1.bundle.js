@@ -1,1 +1,1 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{3:function(s,n,o){"use strict";o.r(n),n.default={json:{"Publish Now":"Please Publish"}}}}]);
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{3:function(n,o,s){"use strict";s.r(o),o.default={json:{Publish:"Print",Now:"ASAP"}}}}]);

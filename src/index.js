@@ -6,11 +6,14 @@ import './style.css';
 import Translator from '../src/languageTranslators/langTranslator.js';
 
 var _translator = new Translator();
+global.translator=_translator;
 
 const element = document.createElement('div');
 element.innerHTML = _translator.parseText("Good morning.");
 element.classList.add('hello');
 document.getElementById('greeting').appendChild(element);
+
+window.addEventListener('onload',event=>{console.log(event);});
 
 const btn1 = document.getElementById('setter');
 btn1.addEventListener('click',function(){

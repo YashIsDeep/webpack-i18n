@@ -1,3 +1,3 @@
 export default {
-	json: {"Publish Now":"Please Publish"},
+	json: {"Publish":"Print","Now":"ASAP"},
 };
