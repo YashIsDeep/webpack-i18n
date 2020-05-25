@@ -10,11 +10,6 @@ var _translator = new Translator();
 global.translator=_translator;
 global.LanguageWrapper=_LanguageWrapper;
 
-const element = document.createElement('div');
-element.innerHTML = _translator.parseText("Good morning.");
-element.classList.add('hello');
-document.getElementById('greeting').appendChild(element);
-
 window.addEventListener('onload',event=>{console.log(event);});
 
 const btn1 = document.getElementById('setter');

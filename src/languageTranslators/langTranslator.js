@@ -29,6 +29,7 @@ class Translator
 			});
 		}
 	}
+	//_translator.parseText("string");
 	parseText(text) // Case sensitive
 	{
 		if(this.JSONobject[text]==undefined)

@@ -2,14 +2,12 @@ var codeContents={
 	render: function(_translator)
 	{
 		const element=document.createElement('div');
-		element.innerHTML="Publish Now";
+		element.innerHTML=global.translator.parseText("Publish Now")+" on Facebook!!";
 		return element;
 	},
 };
-
-export default global.LanguageWrapper(codeContents);
-
-
+export default codeContents;
+/*export default global.LanguageWrapper(codeContents);
 // DEMO CLASS
 var test=class Test
 {
@@ -24,3 +22,4 @@ console.log("DEMO: "+test+" => "+global.LanguageWrapper(test));
 // DEMO STRING
 var test="Publish Now";
 console.log("DEMO: "+test+" => "+global.LanguageWrapper(test));
+*/
