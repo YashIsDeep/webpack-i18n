@@ -1,5 +1,6 @@
 var dictionary;
-function replaceAll(str,mapObj){
+function replaceAll(str,mapObj) // Replaces all key instances of mapObj in str with the corresponding values 
+{
     var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
 
     return str.replace(re, function(matched){
@@ -34,11 +35,11 @@ function modifyUnknown(object)
 	var obj = JSON.parse(str);
 	return obj;
 }
-function modify(unknownVariable)
+function modify(unknownVariable) // Modifies the given variable to translate to the required language
 {
-	if(unknownVariable instanceof Function || typeof unknownVariable === 'function')
+	if(unknownVariable instanceof Function || typeof unknownVariable === 'function')// If function
 		return modifyFunction(unknownVariable);
-	else if(unknownVariable instanceof String || typeof unknownVariable === 'string')
+	else if(unknownVariable instanceof String || typeof unknownVariable === 'string')// If String
 		return modifyString(unknownVariable);
 	else if(unknownVariable.constructor == Object)// If dictionary
 		return modifyDictionary(unknownVariable);
