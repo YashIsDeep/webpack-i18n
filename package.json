@@ -29,7 +29,7 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
+    "i18next": "^19.4.5",
     "lodash": "^4.17.15"
   }
-
 }

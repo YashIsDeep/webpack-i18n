@@ -1,8 +1,8 @@
 var codeContents={
-	render: function(_translator)
+	render: function()
 	{
 		const element=document.createElement('div');
-		element.innerHTML=global.translator.parseText("Publish Now")+" on Facebook!!";
+		element.innerHTML=i18next.t("common:button.save", {count: Math.floor(Math.random() * 2 + 1)})+" on Facebook!!";
 		return element;
 	},
 };

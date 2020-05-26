@@ -1,21 +1,31 @@
 import _ from 'lodash';
 import './style.css';
-import _LanguageWrapper from './languageTranslators/languageWrapper.js';
 
 // Expected to download a json object and store it
 // _translator.translate(str)= json[text] 
-import Translator from '../src/languageTranslators/langTranslator.js';
+import i18next from 'i18next';
 
-var _translator = new Translator();
-global.translator=_translator;
-global.LanguageWrapper=_LanguageWrapper;
-
-window.addEventListener('onload',event=>{console.log(event);});
+i18next
+  .use(i18nextXHRBackend)
+  .init({
+  	lng: 'en',
+    fallbackLng: 'en',
+    debug: true,
+    ns: ['common','special'],
+    defaultNS: 'special',
+    backend: {
+      // load from i18next-gitbook repo
+      loadPath: 'https://raw.githubusercontent.com/i18next/i18next-gitbook/master/locales/{{lng}}/{{ns}}.json',
+      crossDomain: true
+    }
+  }, function(err, t){});
+global.i18next=i18next;
 
 const btn1 = document.getElementById('setter');
 btn1.addEventListener('click',function(){
 	var selectedLanguagePreference=document.querySelector('input[name="lang"]:checked').value;
-	_translator.setLanguage(selectedLanguagePreference);
+	i18next.changeLanguage(selectedLanguagePreference);
+	console.log("New language "+selectedLanguagePreference);
 	if(isPublisherRendered)
 	{
 		isPublisherRendered=false;
@@ -30,7 +40,7 @@ btn2.addEventListener('click',function(){
 	import('./publisher.js').then(function(publisher){
 		if(!isPublisherRendered)// First click
 		{
-			publisherRender=publisher.default.render(_translator);
+			publisherRender=publisher.default.render();
 			document.getElementById('content').appendChild(publisherRender);
 			publisherRender.style.display="block";
 			isPublisherRendered=true;
