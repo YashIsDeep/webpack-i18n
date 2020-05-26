@@ -2,7 +2,7 @@ var codeContents={
 	render: function()
 	{
 		const element=document.createElement('div');
-		element.innerHTML=i18next.t("common:button.save", {count: Math.floor(Math.random() * 2 + 1)})+" on Facebook!!";
+		element.innerHTML=i18next.t("title", {what: Math.floor(Math.random() * 2 + 1)})+" on Facebook!!";
 		return element;
 	},
 };
