@@ -32,9 +32,11 @@ class Translator
 	//_translator.parseText("string");
 	parseText(text) // Case sensitive
 	{
+		var final;
 		if(this.JSONobject[text]==undefined)
-			return text;
+			final=text;
 		else
-			return this.JSONobject[text];
+			final=this.JSONobject[text];
+		console.log(text+" => "+final);
 	}
 }

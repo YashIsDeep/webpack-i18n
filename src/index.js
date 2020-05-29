@@ -4,7 +4,7 @@ import './style.css';
 // Expected to download a json object and store it
 // _translator.translate(str)= json[text] 
 import i18next from 'i18next';
-
+import i18nextXHRBackend from 'i18next-xhr-backend/i18nextXHRBackend';
 i18next
   .use(i18nextXHRBackend)
   .init({
