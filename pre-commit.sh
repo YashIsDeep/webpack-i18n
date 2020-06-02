@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# A pre-commit hook that will stash any changes so that we are running our tests
-# against what we are committing, not what was on in memory.
-
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
